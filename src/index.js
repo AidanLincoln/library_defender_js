@@ -140,6 +140,58 @@ document.addEventListener("DOMContentLoaded", function() {
             })
         })
     })
+    // <div id= "item" class="child"> 
+    //     <img class='imginside' src="unnamed.png">
+    // </div>
+    const map = document.getElementById('maparea')
+    const librarian1button = document.getElementById('defender1button')
+    librarian1button.addEventListener('click',function(event){
+        event.preventDefault()
+        const itemdiv = document.createElement('div')
+        itemdiv.id = "item"
+        itemdiv.className = "child"
+        const itemimg = document.createElement('img')
+        itemimg.setAttribute('src', "/src/images/librarian1.png")
+        itemimg.className = "imginside"
+        itemdiv.appendChild(itemimg)
+        map.appendChild(itemdiv)
+    })
+    const librarian2button = document.getElementById('defender2button')
+    librarian1button.addEventListener('click',function(event){
+        event.preventDefault()
+        const itemdiv = document.createElement('div')
+        itemdiv.id = "item"
+        itemdiv.className = "child"
+        const itemimg = document.createElement('img')
+        itemimg.setAttribute('src', "/src/images/librarian2.png")
+        itemimg.className = "imginside"
+        itemdiv.appendChild(itemimg)
+        map.appendChild(itemdiv)
+    })
+    const librarian3button = document.getElementById('defender3button')
+    librarian1button.addEventListener('click',function(event){
+        event.preventDefault()
+        const itemdiv = document.createElement('div')
+        itemdiv.id = "item"
+        itemdiv.className = "child"
+        const itemimg = document.createElement('img')
+        itemimg.setAttribute('src', "/src/images/librarian3.png")
+        itemimg.className = "imginside"
+        itemdiv.appendChild(itemimg)
+        map.appendChild(itemdiv)
+    })
+    const librarian4button = document.getElementById('defender4button')
+    librarian1button.addEventListener('click',function(event){
+        event.preventDefault()
+        const itemdiv = document.createElement('div')
+        itemdiv.id = "item"
+        itemdiv.className = "child"
+        const itemimg = document.createElement('img')
+        itemimg.setAttribute('src', "/src/images/librarian4.png")
+        itemimg.className = "imginside"
+        itemdiv.appendChild(itemimg)
+        map.appendChild(itemdiv)
+    })
   })
   
   function createUser (event) {
@@ -252,3 +304,9 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 
   }
+$(function () {
+    $("div[id='item']").draggable({
+        containment: "#con",
+        scroll: false
+    });
+});

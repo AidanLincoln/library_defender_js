@@ -170,3 +170,34 @@
     text-decoration: none;
     font-size: 15px;
 }
+#con {
+    background-image: url("src/images/map.png");
+    background-size: cover;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    width: 5000px;
+    height: 2200px;
+    border: 2px solid lightgray;
+    position: relative;
+}
+#item {
+    display: inline-block;
+    width: 1000px;
+    height: 400px;
+    cursor: pointer;
+    position: absolute;
+    /*background-color: lightgreen;*/
+    overflow: hidden;
+}
+.imginside{
+    display:inline-block;
+    width:50%;
+}
+#animate {
+    width: 400px;
+    height: 400px;
+    float:right;
+    bottom: -1400px;
+    position: relative;
+    animation: mymove 30s ;
+}
