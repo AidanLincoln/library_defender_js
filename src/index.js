@@ -11,6 +11,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const newGame = document.getElementById('newGameButton')
     const oldGame = document.getElementById('oldGameButton')
 
+    const noGames = document.createElement('p')
+    noGames.id = "noGamesMessage"
+    noGames.textContent = "You have no saved games"
+    noGames.className = "formtitle"
+
     const sideNav = document.getElementById('sidenav')
         const sideNavLevel = document.getElementById('sidenavlevel')
         const sideNavLibrary = document.getElementById('sidenavlibrary')
@@ -28,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
         bigLogo.hidden = true
         oldUserForm.hidden = true
         newUserForm.hidden = false
+        noGames.hidden = true
 
         newUserForm.addEventListener('submit', function(event){
             event.preventDefault()
@@ -54,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
         bigLogo.hidden = true
         newUserForm.hidden = true
         oldUserForm.hidden = false
+        noGames.hidden = true
 
         oldUserForm.addEventListener('submit', function(event){
             event.preventDefault()
@@ -88,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
         oldGame.hidden = true
         newUserForm.hidden = true
         bigLogo.hidden = false
+        noGames.hidden = true
     })
 
     newGame.addEventListener('click', function(event){
@@ -99,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
         contentBox.className = "contentbox"
         map.hidden = false
         sideNav.hidden = false
+        noGames.hidden = true
 
     })
 
@@ -121,6 +130,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 event.preventDefault()
                 // start game
                 // thisGame = 
+
+                // we need this stuff \/
                 oldGamesForm.hidden = true
                 map.hidden = false
                 sideNav.hidden = false
@@ -197,22 +208,25 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function makeButtons(allGames) {
-      const games = allGames.filter(game => game.user_id === thisUser.id)
-      const oldGames = document.getElementById("oldGameDiv")
-      oldGames.hidden = false
-      games.forEach(function(game){
-        const oldGameInput = document.createElement('button')
-        oldGameInput.className = "navbutton"
-        oldGameInput.textContent = `Level ${game.current_level} - $${game.money} - ${game.created_at}`
-        oldGamesForm.appendChild(oldGameInput)
-        oldGameInput.addEventListener('click', function(event){
-            event.preventDefault()
-            //write code that starts a game with the button
-            //also we need to add code that shows some message if there are no games for a user
-            //stuff for aidan to do
+    const games = allGames.filter(game => game.user_id === thisUser.id)
+    const oldGames = document.getElementById("oldGameDiv")
+    oldGames.hidden = false
+    if(games || games.length < 1){
+        games.forEach(function(game){
+            const oldGameInput = document.createElement('button')
+            oldGameInput.className = "navbutton"
+            oldGameInput.textContent = `Level ${game.current_level} - $${game.money} - ${game.created_at}`
+            oldGamesForm.appendChild(oldGameInput)
+            oldGameInput.addEventListener('click', function(event){
+                event.preventDefault()
+                //write code that starts a game with the button
+                //also we need to add code that shows some message if there are no games for a user
+                //stuff for aidan to do
+            })
         })
-    })
-
+    }else{
+        noGames.hidden = false
+    }
   }
 
   function createGame () {
